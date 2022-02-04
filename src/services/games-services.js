@@ -29,3 +29,19 @@ export const fetchGame = async (id) =>{
 		console.error(erro.message)
 	}
 }
+
+export const fetchNews = async () =>{
+	try {
+		const resp = await fetch("https://mmo-games.p.rapidapi.com/latestnews",{
+			method:'GET',
+			headers:{
+				"x-rapidapi-host": process.env.REACT_APP_HOST,
+				"x-rapidapi-key": process.env.REACT_APP_KEY
+			},			
+		})
+		const News = await resp.json()
+		return News
+	} catch(erro){
+		console.error(erro.message)
+	}
+}

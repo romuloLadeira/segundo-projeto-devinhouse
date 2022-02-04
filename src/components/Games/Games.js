@@ -1,44 +1,26 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { MmoContext } from '../../context/mmoContext';
+import { filterSearch } from '../../helper/filter';
 import {fetchGames} from '../../services/games-services'
+import { Header } from '../Header';
 
 export const Games = () => {
-    const inputEl = useRef("")
-    const [listaGames, setListaGames] = useState([])
-    const [termoBusca, setTermoBusca] = useState('')
-    const [resultadoBusca, setResultadoBusca] = useState([])
+    const{termoBusca, lista, setLista, listaFiltrada} =useContext(MmoContext)
 
     useEffect(()=>{
       (async () =>{
         const games = await fetchGames()
-        setListaGames(games)
+        setLista(games)
+        
       })()
   
     },[])
     
-  const handleBusca = (termo)=>{
-    setTermoBusca(termo)
-    if(termo !== ''){
-      const novaListaGames = listaGames.filter((game)=>{
-       return game.title.toLowerCase().includes(termo.toLowerCase())
-      })
-      setResultadoBusca(novaListaGames)
-    }else{
-      setResultadoBusca(listaGames)
-    }
-    
-  }
-
-    const getTermoBusca =() =>{
-      handleBusca(inputEl.current.value)
-    }
-    
-    
   return (<>
 
-    <h1>DevInMMO</h1>
-    <input ref={inputEl} type='text' placeholder='busca'value={termoBusca} onChange={getTermoBusca}></input>
-    {(termoBusca.length < 1?listaGames:resultadoBusca).map((game)=>{
+    <Header/>
+    {(termoBusca.length < 1?lista:listaFiltrada).map((game)=>{
         return (
       <>
         
