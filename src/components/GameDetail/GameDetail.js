@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import {fetchGame} from '../../services/games-services'
+import { CommentForm } from '../Comment';
 
 export const GameDetail = () => {
 
@@ -11,13 +12,17 @@ export const GameDetail = () => {
       (async () =>{
         const game = await fetchGame(id)
         setGameInfo(game)
-        console.log(game)
+        
       })()
       
     },[])
-  return <div>
+  return <>
+  
+  <div>
        <h1>{gameInfo.title}</h1>
       <img src={gameInfo.thumbnail} alt={gameInfo.title}/>
-  </div>;
+  </div>
+  <CommentForm/>
+  </>
 };
 

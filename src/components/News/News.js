@@ -21,13 +21,13 @@ export const News = () => {
             return (
           <>
             
-            <il key={news.id}>
+            <li key={news.id}>
             <h3>{news.title}</h3>
               <img src={news.thumbnail} alt={news.title}/>
               
               
 
-            </il>
+            </li>
           </> 
             )})}
         </ul>
