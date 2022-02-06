@@ -3,9 +3,10 @@ import React, { useEffect, useState } from 'react';
 import * as Yup from 'yup'
 import CommentCard from './CommentCard';
 
-export const CommentForm = () => {
- 
+export const CommentForm = ({gameTitle}) => {
+  
   const [listaComments, setListaComments] = useState([])
+  const [comments, setComents] = useState({})
   const formik = useFormik({
     initialValues:{
           name:"",
@@ -23,12 +24,36 @@ export const CommentForm = () => {
       const id = date.toString()
       const novaLista = [...listaComments, {id,name, gameComment}]
       setListaComments(novaLista)
+      setComents({...comments, [gameTitle]:novaLista})
+      
+
       
     }
-      
   
   }) 
- useEffect(()=>{console.log('renderizou')})
+ 
+ useEffect(()=>{
+   
+   if(localStorage.getItem("comments")=== null ||localStorage.getItem("comments")=== 'undefined' ){
+     localStorage.setItem("comments", JSON.stringify({}))
+   }else{
+    
+     setComents(JSON.parse(localStorage.getItem("comments")))
+    
+   }
+     
+   }
+  ,[])
+
+  useEffect(()=>{
+    localStorage.setItem("comments", JSON.stringify(comments))
+    
+  },[comments])
+  
+ 
+ 
+ 
+
   return <><form onSubmit={formik.handleSubmit}>
       <input id='name' name='name' type='text' placeholder='nome' onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.name} />
       {formik.touched.name &&formik.errors.name ? <p>{formik.errors.name}</p>:null}
@@ -37,10 +62,11 @@ export const CommentForm = () => {
       <input id='comment' name='gameComment' type='text' placeholder='comentário' onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.gameComment} />
       {formik.touched.gameComment && formik.errors.gameComment ? <p>{formik.errors.gameComment}</p>:null}
       <button type='submit' >Enviar comentário</button>
+      <button type='button' onClick={()=>{console.log('comments',comments)}}>console comments</button>
   </form>
-  <div>{
-    listaComments.map((news)=>{
-      return <CommentCard key={news.id} name={news.name} comment={news.gameComment}/>
+  <div >{
+    listaComments.map((comment)=>{
+      return <CommentCard key={comment.id} name={comment.name} comment={comment.gameComment}/>
         
     })
     }</div>

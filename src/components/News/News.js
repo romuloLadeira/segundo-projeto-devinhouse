@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { MmoContext } from '../../context/mmoContext';
 import { fetchNews } from '../../services/games-services';
 import { Header } from '../Header';
+import {NewsCard} from '../NewsCard';
 export const News = () => {
 
     const{termoBusca, lista, setLista, listaFiltrada} =useContext(MmoContext)
@@ -16,21 +17,16 @@ export const News = () => {
     return (<>
 
         <Header/>
-        <ul>
+        <div>
         {(termoBusca.length < 1?lista:listaFiltrada).map((news)=>{
             return (
           <>
             
-            <li key={news.id}>
-            <h3>{news.title}</h3>
-              <img src={news.thumbnail} alt={news.title}/>
-              
-              
-
-            </li>
+            <NewsCard key={news.id} title={news.title} description={news.short_description} url={news.article_url} thumbnail={news.thumbnail}/>
+            
           </> 
             )})}
-        </ul>
+        </div>
         )
         </>
 

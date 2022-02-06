@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { MmoContext } from '../../context/mmoContext';
 import { filterSearch } from '../../helper/filter';
 import {fetchGames} from '../../services/games-services'
+import {GameCard} from '../GameCard';
 import { Header } from '../Header';
 
 export const Games = () => {
@@ -24,14 +25,9 @@ export const Games = () => {
         return (
       <>
         
-        <div key={game.id}>
-          <img src={game.thumbnail} alt={game.title}/>
-          <Link to={`/game/${game.id}`}>
-              <h3>{game.title}</h3>
-          </Link>
-          <h4>{game.platform}</h4>
-          <p>{game.short_description}</p>
-        </div>
+        <GameCard key={game.id} thumbnail={game.thumbnail} title={game.title} platform={game.platform} description={game.short_description} id={game.id}/>
+         
+        
       </> 
         )
     })}
