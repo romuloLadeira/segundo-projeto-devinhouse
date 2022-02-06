@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import {fetchGame} from '../../services/games-services'
 import { CommentForm } from '../Comment';
+import { Header } from '../Header';
 
 export const GameDetail = () => {
 
@@ -27,6 +28,7 @@ export const GameDetail = () => {
   return <>
   
   <div>
+       <Header/>
        <h1>{gameInfo.title}</h1>
       <section>
       <img style={{width:"600px"}}src={mainScreenshot} alt={gameInfo.title}/>
