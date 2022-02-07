@@ -6,6 +6,7 @@ import {fetchGames} from '../../services/games-services'
 import {GameCard} from '../GameCard';
 import { Header } from '../Header';
 import { GameList } from '../styles/GameList';
+import { GCardConteiner } from '../styles/GCardConteiner';
 
 export const Games = () => {
     const{termoBusca, lista, setLista, listaFiltrada} =useContext(MmoContext)
@@ -26,7 +27,9 @@ export const Games = () => {
     {(termoBusca.length < 1?lista:listaFiltrada).map((game)=>{
         return (
       <> 
+      <GCardConteiner>
         <GameCard key={game.id} thumbnail={game.thumbnail} title={game.title} platform={game.platform} description={game.short_description} id={game.id}/>
+      </GCardConteiner>
       </> 
         )
     })}

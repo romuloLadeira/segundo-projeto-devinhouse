@@ -2,6 +2,7 @@ import React, { useContext, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { MmoContext } from '../../context/mmoContext';
 import { filterSearch } from '../../helper/filter';
+import { StyledHeader } from '../styles/StyledHeader';
 
 export const Header = () => {
     const inputEl = useRef("")
@@ -15,14 +16,16 @@ export const Header = () => {
          setListaFiltrada(filterSearch(inputEl.current.value, lista))
         }
         
-  return <div>
+  return <StyledHeader>
      <nav>
      <h1>DevInMMO</h1>
+     <div>
      <Link to='/news'>Noticias</Link>
      <Link to='/'>Jogos</Link>
+     </div>
     </nav> 
     <input ref={inputEl} type='text' placeholder='busca'value={termoBusca} onChange={getTermoBusca}></input>
     <button onClick={themeHandler}>mudar temar</button>
-  </div>;
+  </StyledHeader>;
 };
 
