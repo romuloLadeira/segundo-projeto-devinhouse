@@ -59,10 +59,10 @@ export const CommentForm = ({gameTitle}) => {
       {formik.touched.name &&formik.errors.name ? <p>{formik.errors.name}</p>:null}
       <input id='email' name='email' type='text' placeholder='e-mail' onBlur={formik.handleBlur} onChange={formik.handleChange}  value={formik.values.email} />
       {formik.touched.email && formik.errors.email ? <p>{formik.errors.email}</p>:null}
-      <input id='comment' name='gameComment' type='text' placeholder='comentário' onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.gameComment} />
+      <textarea style={{width:'400px', display:'block'}} id='comment' name='gameComment' type='text' placeholder='comentário' onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.gameComment} />
       {formik.touched.gameComment && formik.errors.gameComment ? <p>{formik.errors.gameComment}</p>:null}
       <button type='submit' >Enviar comentário</button>
-      <button type='button' onClick={()=>{console.log('comments',comments)}}>console comments</button>
+      
   </form>
   <div >{
     listaComments.map((comment)=>{

@@ -37,6 +37,19 @@ img {
         background-color:${({theme})=>theme.color.background};
         color:${({theme})=>theme.color.font};
     }
+
+    h1{
+        font-size:2rem;
+        font-weight:bold;
+    }
+    h3{
+        font-size:1.2rem;
+        font-weight:bold;
+    }
+    h4{
+        font-size:1.1rem;
+        font-weight:bold;
+    }
 `
 
 export default GlobalStyle 

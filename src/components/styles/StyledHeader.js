@@ -8,7 +8,7 @@ height: 200px;
         display: flex;
         justify-content:space-between;
         width: 90%;
-        margin: 5%;
+        margin: 0 20px 20px 20px;
     }
     a{
         text-decoration:none;
@@ -18,5 +18,10 @@ height: 200px;
     h1{
         font-size:3rem;
 
+    }
+    div{
+        margin:80px 20px 20px 20px;
+        display: flex;
+        justify-content:space-between;
     }
 `

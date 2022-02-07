@@ -5,8 +5,8 @@ import { filterSearch } from '../../helper/filter';
 import {fetchGames} from '../../services/games-services'
 import {GameCard} from '../GameCard';
 import { Header } from '../Header';
-import { GameList } from '../styles/GameList';
-import { GCardConteiner } from '../styles/GCardConteiner';
+import { List } from '../styles/List';
+import { GCardConteiner } from '../styles/CardConteiner';
 
 export const Games = () => {
     const{termoBusca, lista, setLista, listaFiltrada} =useContext(MmoContext)
@@ -23,7 +23,7 @@ export const Games = () => {
   return (<>
 
     <Header/>
-    <GameList>
+    <List>
     {(termoBusca.length < 1?lista:listaFiltrada).map((game)=>{
         return (
       <> 
@@ -33,7 +33,7 @@ export const Games = () => {
       </> 
         )
     })}
-    </GameList>
+    </List>
   </>);
 };
 

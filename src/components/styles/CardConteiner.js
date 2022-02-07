@@ -27,3 +27,20 @@ export const GCardConteiner = styled.div`
         color:${({theme})=>theme.color.font};
     }
 `
+export const NewsCardConteiner =styled(GCardConteiner)`
+   width:80%;
+   height: 250px;
+
+div{
+    display:flex;
+    justify-content:space-between;
+
+}
+   img {
+        width: 30%;
+        border-radius: 5px;
+    }
+section{
+ width: 50%;
+}
+` 

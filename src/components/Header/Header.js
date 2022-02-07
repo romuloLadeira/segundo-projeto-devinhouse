@@ -6,7 +6,7 @@ import { StyledHeader } from '../styles/StyledHeader';
 
 export const Header = () => {
     const inputEl = useRef("")
-    const{termoBusca, setTermoBusca, lista,setListaFiltrada,theme, setTheme} =useContext(MmoContext)
+    const{termoBusca, setTermoBusca, lista,listaFiltrada,setListaFiltrada,theme, setTheme} =useContext(MmoContext)
 
     const themeHandler= ()=>{
       theme==='light'? setTheme('dark'):setTheme('light')
@@ -19,13 +19,16 @@ export const Header = () => {
   return <StyledHeader>
      <nav>
      <h1>DevInMMO</h1>
-     <div>
+     <section>
      <Link to='/news'>Noticias</Link>
      <Link to='/'>Jogos</Link>
-     </div>
+     </section>
     </nav> 
-    <input ref={inputEl} type='text' placeholder='busca'value={termoBusca} onChange={getTermoBusca}></input>
-    <button onClick={themeHandler}>mudar temar</button>
+    <div>
+    <input ref={inputEl} type='text' placeholder='Busque Aqui'value={termoBusca} onChange={getTermoBusca}></input>
+    <p>({listaFiltrada.length})Resultados para '{termoBusca}'</p>
+    <button onClick={themeHandler}>mudar tema</button>
+    </div>
   </StyledHeader>;
 };
 

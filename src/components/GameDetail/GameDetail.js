@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import {fetchGame} from '../../services/games-services'
 import { CommentForm } from '../Comment';
 import { Header } from '../Header';
+import { Infos, Requirements } from '../styles/GameDatailStyles';
 
 export const GameDetail = () => {
 
@@ -39,7 +40,7 @@ export const GameDetail = () => {
       </div>
       </section>
       
-      <section>
+      <Infos>
         <div >
           <h4>plataforma</h4>
           <p>{gameInfo.platform}</p>
@@ -52,30 +53,30 @@ export const GameDetail = () => {
           <h4>Descrição</h4>
           <p>{gameInfo.short_description}</p>
         </div>
-      </section>
-      <section>
+      </Infos>
+      <Requirements>
         <h3>Requisitos de sistema</h3>
         <div >
-          <h4>Sistema Operacional</h4>
+          <h4>Sistema Operacional:</h4>
           <p>{gameRequirements.os}</p>
         </div>
         <div >
-          <h4>processador</h4>
+          <h4>Processador:</h4>
           <p>{gameRequirements.processor}</p>
         </div>
         <div >
-          <h4>memory</h4>
+          <h4>Memory:</h4>
           <p>{gameRequirements.memory}</p>
         </div>
         <div>
-          <h4>Placa de vídeo</h4>
+          <h4>Placa de vídeo:</h4>
           <p>{gameRequirements.graphics}</p>
         </div>
         <div >
-          <h4>Espaço em disco</h4>
+          <h4>Espaço em disco:</h4>
           <p>{gameRequirements.storage}</p>
         </div>
-      </section>
+      </Requirements>
   </div>
   <CommentForm  gameTitle={gameInfo.title}/>
   
